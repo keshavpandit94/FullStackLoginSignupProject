@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import BACK_URL from '../api';
 
 function PasswordChange() {
     const [oldPassword, setOldPassword] = useState('');
@@ -43,7 +44,7 @@ function PasswordChange() {
         if (!validateForm()) return;
 
         setLoading(true);
-        axios.post('/api/v1/user/password-change', {
+        axios.post(`${BACK_URL}/api/v1/user/password-change`, {
             oldPassword: oldPassword,
             newPassword: newPassword
         })

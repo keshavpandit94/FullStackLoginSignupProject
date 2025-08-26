@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BACK_URL from '../api';
 
 const EditProfile = () => {
     const [email, setEmail] = useState('');
@@ -37,7 +38,7 @@ const EditProfile = () => {
 
         setLoading(true);
         axios
-            .post('/api/v1/user/detail-update', {
+            .post(`${BACK_URL}/api/v1/user/detail-update`, {
                 email: email.trim().toLowerCase(),
                 mobileNumber: cleanMobileNumber,
                 fullName: fullName.trim(),

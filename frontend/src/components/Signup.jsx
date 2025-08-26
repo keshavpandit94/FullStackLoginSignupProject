@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
+import BACK_URL from '../api';
 
 function Signup() {
     const [email, setEmail] = useState('');
@@ -97,7 +98,7 @@ function Signup() {
         // Clean mobile number (remove any non-digit characters)
         const cleanMobileNumber = mobileNumber.replace(/\D/g, '');
 
-        axios.post('/api/v1/user/signup', {
+        axios.post(`${BACK_URL}/api/v1/user/signup`, {
             email: email.trim().toLowerCase(),
             username: username.trim().toLowerCase(),
             fullName: fullName.trim(),

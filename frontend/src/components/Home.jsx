@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import BACK_URL from '../api';
 
 function Home() {
   const [user, setUser] = useState(null);
@@ -8,7 +9,7 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/v1/user/me')
+    axios.get(`${BACK_URL}/api/v1/user/me`)
       .then((res) => {
         setUser(res.data.data);
         console.log("data", res.data.data);
@@ -22,7 +23,7 @@ function Home() {
   }, [navigate]);
 
   const handleLogout = () => {
-    axios.post('/api/v1/user/logout')
+    axios.post(`${BACK_URL}/api/v1/user/logout`)
       .then(() => {
         setMessage('Logged out successfully.');
         setTimeout(() => {
@@ -39,7 +40,7 @@ function Home() {
   };
 
   const handleDeleteAccount = () => {
-    axios.post('/api/v1/user/delete-account')
+    axios.post(`${BACK_URL}/api/v1/user/delete-account`)
       .then(() => {
         setMessage('Account deleted successfully.');
         setTimeout(() => {

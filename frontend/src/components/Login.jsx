@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import BACK_URL from '../api';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -51,7 +52,7 @@ function Login() {
         setIsLoading(true);
         setError(''); // Clear any previous errors
 
-        axios.post('/api/v1/user/login', {
+        axios.post(`${BACK_URL}/api/v1/user/login`, {
             email: email.trim(),
             password
         })
