@@ -7,9 +7,14 @@ function Home() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-
+  const token = localStorage.getItem('authToken');
   useEffect(() => {
-    axios.get(`${BACK_URL}/api/v1/user/me`)
+    
+    axios.get(`${BACK_URL}/api/v1/user/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then((res) => {
         setUser(res.data.data);
         console.log("data", res.data.data);
@@ -22,8 +27,13 @@ function Home() {
       });
   }, [navigate]);
 
+
   const handleLogout = () => {
-    axios.post(`${BACK_URL}/api/v1/user/logout`)
+    axios.post(`${BACK_URL}/api/v1/user/logout`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(() => {
         setMessage('Logged out successfully.');
         setTimeout(() => {
@@ -40,7 +50,11 @@ function Home() {
   };
 
   const handleDeleteAccount = () => {
-    axios.post(`${BACK_URL}/api/v1/user/delete-account`)
+    axios.post(`${BACK_URL}/api/v1/user/delete-account`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(() => {
         setMessage('Account deleted successfully.');
         setTimeout(() => {

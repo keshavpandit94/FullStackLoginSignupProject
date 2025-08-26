@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BACK_URL from '../api';
 
+const token = localStorage.getItem('authToken');
+
 const EditProfile = () => {
     const [email, setEmail] = useState('');
     const [mobileNumber, setMobileNumber] = useState('');
@@ -42,7 +44,13 @@ const EditProfile = () => {
                 email: email.trim().toLowerCase(),
                 mobileNumber: cleanMobileNumber,
                 fullName: fullName.trim(),
-            })
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+
+                })
             .then((res) => {
                 console.log('Profile updated successfully:', res.data);
                 setSuccess('Profile updated successfully!');
