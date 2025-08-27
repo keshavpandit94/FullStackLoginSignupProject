@@ -50,7 +50,9 @@ const EditProfile = () => {
                         Authorization: `Bearer ${token}`,
                     },
 
-                })
+                },
+                { withCredentials: true }
+            )
             .then((res) => {
                 console.log('Profile updated successfully:', res.data);
                 setSuccess('Profile updated successfully!');

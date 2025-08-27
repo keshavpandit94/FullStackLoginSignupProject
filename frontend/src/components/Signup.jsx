@@ -104,7 +104,9 @@ function Signup() {
             fullName: fullName.trim(),
             mobileNumber: cleanMobileNumber,
             password,
-        })
+        },
+        { withCredentials: true }
+    )
             .then((res) => {
                 console.log("Signup Successful:", res.data.data);
 

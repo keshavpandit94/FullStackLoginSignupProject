@@ -8,12 +8,15 @@ function Home() {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('authToken');
+
+  console.log(token)
   useEffect(() => {
     
     axios.get(`${BACK_URL}/api/v1/user/me`, {
       headers: {
         Authorization: `Bearer ${token}`
-      }
+      },
+      withCredentials: true,
     })
       .then((res) => {
         setUser(res.data.data);
@@ -31,8 +34,10 @@ function Home() {
   const handleLogout = () => {
     axios.post(`${BACK_URL}/api/v1/user/logout`, {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+        
+      },
+      withCredentials: true,
     })
       .then(() => {
         setMessage('Logged out successfully.');
@@ -53,7 +58,8 @@ function Home() {
     axios.post(`${BACK_URL}/api/v1/user/delete-account`, {
       headers: {
         Authorization: `Bearer ${token}`
-      }
+      },
+      withCredentials: true,
     })
       .then(() => {
         setMessage('Account deleted successfully.');
