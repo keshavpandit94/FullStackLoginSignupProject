@@ -16,7 +16,7 @@ function Home() {
       headers: {
         Authorization: `Bearer ${token}`
       },
-      withCredentials: true,
+      // withCredentials: true,
     })
       .then((res) => {
         setUser(res.data.data);
@@ -37,7 +37,7 @@ function Home() {
         Authorization: `Bearer ${token}`,
         
       },
-      withCredentials: true,
+      // withCredentials: true,
     })
       .then(() => {
         setMessage('Logged out successfully.');

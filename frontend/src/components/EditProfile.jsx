@@ -51,7 +51,7 @@ const EditProfile = () => {
                     },
 
                 },
-                { withCredentials: true }
+                // { withCredentials: true }
             )
             .then((res) => {
                 console.log('Profile updated successfully:', res.data);

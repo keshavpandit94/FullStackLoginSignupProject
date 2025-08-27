@@ -56,7 +56,7 @@ function Login() {
             email: email.trim(),
             password
         },
-        { withCredentials: true }
+        // { withCredentials: true }
     )
             .then((res) => {
                 console.log("Login Successful:", res.data.data);
