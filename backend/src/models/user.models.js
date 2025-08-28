@@ -13,25 +13,25 @@ const userSchema = new Schema(
         },
         email: {
             type: String,
-            require: true,
+            required: true,
             unique: true,
             trim: true,
         },
         fullName: {
             type: String,
-            require: true,
+            required: true,
             trim: true,
             index: true
         },
         mobileNumber: {
             type: Number,
-            require: true,
+            required: true,
             unique: true,
             trim: true,
         },
         password: {
             type: String,
-            require: [true, 'Please provide a password'],
+            required: [true, 'Please provide a password'],
         }
     },
     {

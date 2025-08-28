@@ -55,14 +55,13 @@ function Login() {
         axios.post(`${BACK_URL}/api/v1/user/login`, {
             email: email.trim(),
             password
-        },
-        // { withCredentials: true }
+        }
     )
             .then((res) => {
                 console.log("Login Successful:", res.data.data);
 
                 console.log(res.data.token)
-                const token = res.data.data.token || res.data.token; // Adjust based on your API response structure
+                const token = res.data.data.accessToken || res.data.accessToken; // Adjust based on your API response structure
                 console.log(token)
                 if (token) {
                     localStorage.setItem('authToken', token);
