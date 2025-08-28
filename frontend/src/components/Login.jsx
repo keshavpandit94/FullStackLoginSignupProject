@@ -60,8 +60,8 @@ function Login() {
             .then((res) => {
                 console.log("Login Successful:", res.data.data);
 
-                console.log(res.data.token)
-                const token = res.data.data.accessToken || res.data.accessToken; // Adjust based on your API response structure
+                console.log(res.data.data.accessToken)
+                const token = res.data.data.accessToken // Adjust based on your API response structure
                 console.log(token)
                 if (token) {
                     localStorage.setItem('authToken', token);

@@ -7,7 +7,7 @@ function Home() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('authToken');
 
   console.log(token)
   useEffect(() => {
