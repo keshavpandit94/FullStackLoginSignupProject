@@ -6,10 +6,12 @@ const app = express()
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'));
 app.use(cookieParser());
 // app.use((req, res, next) => {
@@ -22,4 +24,4 @@ import userRoutes from './routers/user.router.js'
 
 app.use("/api/v1/user", userRoutes)
 
-export {app}
+export { app }

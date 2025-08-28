@@ -7,14 +7,15 @@ function Home() {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem('token');
 
   console.log(token)
   useEffect(() => {
     
     axios.get(`${BACK_URL}/api/v1/user/me`, {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
       },
       // withCredentials: true,
     })
